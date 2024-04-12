@@ -28,7 +28,7 @@ export class User extends BaseEntity{
   CreatedAt:Date
 
   @Column()
-  role:Role
+  role:string
 
   
 }

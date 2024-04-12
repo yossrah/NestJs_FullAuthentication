@@ -1,6 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { AuthCredentialsDto } from 'src/common/dtos/authCredentials.dto';
-import { SignInCredentials } from 'src/common/dtos/signInCredentials.dto';
+import { SignInCredentialsDto } from 'src/common/dtos/signInCredentials.dto';
 import { User } from 'src/entities/user.entity';
 import { AuthService } from './auth.service';
 
@@ -13,7 +13,7 @@ register(@Body() createUserDto:AuthCredentialsDto):Promise<User>{
     }
 
 @Post('login')
-login(@Body() SignInPayload:SignInCredentials):Promise<{accessToken:string}>{
+login(@Body() SignInPayload:SignInCredentialsDto):Promise<{accessToken:string}>{
      return this.authService.validateUser(SignInPayload)
 }
 }
