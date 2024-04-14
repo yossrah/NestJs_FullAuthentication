@@ -7,6 +7,8 @@ import { typeOrmConfigAsync } from './database/typeorm.config';
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
 import { MailingModule } from './modules/mailing/mailing.module';
+import { APP_GUARD } from '@nestjs/core';
+import { JwtAuthGuard } from './common/guards/jwt-auth.guard';
 
 
 @Module({
@@ -17,6 +19,11 @@ import { MailingModule } from './modules/mailing/mailing.module';
     UsersModule,
     MailingModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService,
+   /* {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
+    }*/
+  ],
 })
 export class AppModule {}
